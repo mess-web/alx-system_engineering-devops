@@ -1,13 +1,6 @@
-#Creates Sets up client SSH configuration file
-file_line { 'ssh_config':
-    ensure   => present,
-    path     => '/etc/ssh/ssh_config',
-    line     => 'PasswordAuthentication no',
-    multiple => 'true'
-}
-file_line { 'ssh_config_2':
-    ensure   => present,
-    path     => '/etc/ssh/ssh_config',
-    line     => 'IdentityFile ~/.ssh/school',
-    multiple => 'true'
+#!/usr/bin/env bash
+# connect to a server Execute a command
+
+exec { 'echo "PasswordAuthentication no\nIdentityFile ~/.ssh/school" >> /etc/ssh/ssh_config':
+        path    => '/bin/'
 }
